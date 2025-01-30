@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Timer from "./components/timer";
 import CountDownTimer from "./components/countdown-timer";
+import Scoreboard from "./components/scoreboard";
 
 // Video data with IDs and start times
 const videoData = [
@@ -133,8 +134,8 @@ const videoData = [
   },
   {
     no: "23",
-    id: "DFEVA5-INzM",
-    start: 118,
+    id: "ScRCef7kXGg",
+    start: 0,
   },
   {
     no: "24",
@@ -171,56 +172,56 @@ const videoData = [
     id: "R0n4T0SQt70",
     start: 2,
   },
-  // {
-  //   no: "31",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "32",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "33",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "34",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "35",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "36",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "37",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "38",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "39",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "40",
-  //   id: "",
-  //   start: 0,
-  // },
+  {
+    no: "31",
+    id: "I8PeN_wEs3w",
+    start: 10,
+  },
+  {
+    no: "32",
+    id: "VtEOxczidvE",
+    start: 7,
+  },
+  {
+    no: "33",
+    id: "xfLmv1TsBRw",
+    start: 60,
+  },
+  {
+    no: "34",
+    id: "yZsroWSE3_E",
+    start: 80,
+  },
+  {
+    no: "35",
+    id: "UvMA0_G6A3g",
+    start: 63,
+  },
+  {
+    no: "36",
+    id: "ltewjOTLhl8",
+    start: 80,
+  },
+  {
+    no: "37",
+    id: "pAfCri2iqsY",
+    start: 63,
+  },
+  {
+    no: "38",
+    id: "df23gNFCprw",
+    start: 110,
+  },
+  {
+    no: "39",
+    id: "1sl1PxeU_wk",
+    start: 96,
+  },
+  {
+    no: "40",
+    id: "RIFBoS04ETk",
+    start: 131,
+  },
   // {
   //   no: "41",
   //   id: "",
@@ -312,10 +313,11 @@ export default function YouTubePage() {
           <p className=" text-6xl font-bold mb-10">กติกา</p>
 
           <ol className=" text-4xl mb-20">
-            <li>1. ยกมือให้กรรมการชี้ จึงจะมีสิทธิตอบ</li>
-            <li>2. เมื่อกรรมการชี้ ต้องตอบภายใน 5 วินาที</li>
-            <li>3. ต้องตอบให้ถูกทั้งชื่อเพลง และศิลปิน</li>
-            <li>4. ตอบได้ 1 คะแนน ตอบผิด หรือตอบไม่ทัน -3 คะแนน</li>
+            <li>1. ยกมือให้ กรรมการให้สัญญาณ จึงจะมีสิทธิตอบ</li>
+            <li>2. ต้องตอบภายใน 5 วินาที</li>
+            <li>3. ต้องตอบชื่อเพลงให้ถูกต้อง</li>
+            <li>4. ตอบถูกได้ 1 คะแนน</li>
+            <li>5. ตอบผิด หรือตอบไม่ทัน -3 คะแนน</li>
           </ol>
         </div>
         {videoData.map((video, index) => {
@@ -381,8 +383,12 @@ export default function YouTubePage() {
         })}
       </div>
       <div>
-        <div className=" m-6 flex flex-row justify-end sticky top-0 right-0">
+        <div className=" m-6 flex flex-row justify-end sticky top-6 right-0">
           <Timer />
+        </div>
+
+        <div className=" m-6 flex flex-row justify-end sticky top-56 right-0">
+          <Scoreboard />
         </div>
       </div>
     </div>

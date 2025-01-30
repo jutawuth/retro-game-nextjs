@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
+const time = 300 // 5 minutes in seconds
 export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(time); 
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
@@ -17,11 +18,14 @@ export default function Timer() {
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(
+      2,
+      "0"
+    )}`;
   };
 
   return (
-    <div className="flex flex-col items-center p-4 border rounded-lg shadow-md w-64 bg-white">
+    <div className="flex flex-col items-center p-4 border rounded-lg w-full shadow-lg   bg-white">
       <h1 className="text-xl font-bold mb-4">5 Minute Timer</h1>
       <p className="text-5xl font-bold mb-4">{formatTime(timeLeft)}</p>
       <div className="flex gap-2">
@@ -34,7 +38,7 @@ export default function Timer() {
         <button
           onClick={() => {
             setIsRunning(false);
-            setTimeLeft(600);
+            setTimeLeft(time);
           }}
           className="px-4 py-2 bg-red-500 text-white rounded-lg"
         >
