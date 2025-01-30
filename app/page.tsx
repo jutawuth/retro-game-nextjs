@@ -8,6 +8,12 @@ import { useState } from "react";
 import Timer from "./components/timer";
 import CountDownTimer from "./components/countdown-timer";
 import Scoreboard from "./components/scoreboard";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const exVideoData = [
   {
@@ -336,123 +342,73 @@ export default function YouTubePage() {
           </ol>
         </div>
 
-        <div className="flex flex-row flex-wrap w-full">
-          {exVideoData.map((video, index) => {
-            const videoUrl = playVideos[index]
-              ? `https://www.youtube.com/embed/${video.id}?start=${video.start}&autoplay=1`
-              : "";
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Example</AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-row flex-wrap w-full">
+                {exVideoData.map((video, index) => {
+                  const videoUrl = playVideos[index]
+                    ? `https://www.youtube.com/embed/${video.id}?start=${video.start}&autoplay=1`
+                    : "";
 
-            if (index < 3) {
-              return (
-                <Card
-                  key={index}
-                  className={cn(
-                    "m-4 w-[400px] p-6 shadow-xl",
-                    index < 3 && " bg-yellow-100"
-                  )}
-                >
-                  <h2 className="mb-4 text-xl font-bold">
-                    {index < 3 ? <>Example </> : <> {index - 2}</>}
-                  </h2>
-                  <div className="mb-4 flex justify-between">
-                    <Button
-                      onClick={() => togglePlay(index)}
+                  return (
+                    <Card
+                      key={index}
                       className={cn(
-                        "rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700",
-                        playVideos[index] && "bg-red-600 hover:bg-red-700"
+                        "m-4 w-[400px] p-6 shadow-xl  bg-yellow-100"
                       )}
                     >
-                      {playVideos[index] ? "Stop Video" : "Play Video"}
-                    </Button>
-                    {playVideos[index] && <CountDownTimer />}
+                      <h2 className="mb-4 text-xl font-bold">Example</h2>
+                      <div className="mb-4 flex justify-between">
+                        <Button
+                          onClick={() => togglePlay(index)}
+                          className={cn(
+                            "rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700",
+                            playVideos[index] && "bg-red-600 hover:bg-red-700"
+                          )}
+                        >
+                          {playVideos[index] ? "Stop Video" : "Play Video"}
+                        </Button>
+                        {playVideos[index] && <CountDownTimer />}
 
-                    <Button
-                      onClick={() => toggleShow(index)}
-                      className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-                    >
-                      {showVideos[index] ? "Hide" : "Show"}
-                    </Button>
-                  </div>
-                  <CardContent
-                    className={cn(
-                      "relative h-64 w-full overflow-hidden rounded-2xl bg-black",
-                      showVideos[index] ? "visible" : "hidden"
-                    )}
-                  >
-                    {videoUrl ? (
-                      <motion.iframe
-                        src={videoUrl}
-                        title={`YouTube Video Player ${index + 1}`}
-                        className="h-full w-full rounded-xl border-none"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                      ></motion.iframe>
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gray-800 text-white">
-                        <p>Press Play to Start the Video</p>
+                        <Button
+                          onClick={() => toggleShow(index)}
+                          className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                        >
+                          {showVideos[index] ? "Hide" : "Show"}
+                        </Button>
                       </div>
-                    )}
-                  </CardContent>
-                </Card>
-              );
-            }
-
-            return (
-              <Card
-                key={index}
-                className={cn("m-4 w-[400px] p-6 shadow-xl  bg-yellow-100")}
-              >
-                <h2 className="mb-4 text-xl font-bold">Example</h2>
-                <div className="mb-4 flex justify-between">
-                  <Button
-                    onClick={() => togglePlay(index)}
-                    className={cn(
-                      "rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700",
-                      playVideos[index] && "bg-red-600 hover:bg-red-700"
-                    )}
-                  >
-                    {playVideos[index] ? "Stop Video" : "Play Video"}
-                  </Button>
-                  {playVideos[index] && <CountDownTimer />}
-
-                  <Button
-                    onClick={() => toggleShow(index)}
-                    className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-                  >
-                    {showVideos[index] ? "Hide" : "Show"}
-                  </Button>
-                </div>
-                <CardContent
-                  className={cn(
-                    "relative h-64 w-full overflow-hidden rounded-2xl bg-black",
-                    showVideos[index] ? "visible" : "hidden"
-                  )}
-                >
-                  {videoUrl ? (
-                    <motion.iframe
-                      src={videoUrl}
-                      title={`YouTube Video Player ${index + 1}`}
-                      className="h-full w-full rounded-xl border-none"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                    ></motion.iframe>
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gray-800 text-white">
-                      <p>Press Play to Start the Video</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-        
+                      <CardContent
+                        className={cn(
+                          "relative h-64 w-full overflow-hidden rounded-2xl bg-black",
+                          showVideos[index] ? "visible" : "hidden"
+                        )}
+                      >
+                        {videoUrl ? (
+                          <motion.iframe
+                            src={videoUrl}
+                            title={`YouTube Video Player ${index + 1}`}
+                            className="h-full w-full rounded-xl border-none"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                          ></motion.iframe>
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-gray-800 text-white">
+                            <p>Press Play to Start the Video</p>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
 
         <div className="flex flex-row flex-wrap w-full">
           {videoData.map((video, index) => {
@@ -461,7 +417,13 @@ export default function YouTubePage() {
               : "";
 
             return (
-              <Card key={index} className={cn("m-4 w-[400px] p-6 shadow-xl")}>
+              <Card
+                key={index}
+                className={cn(
+                  "m-4 w-[400px] p-6 shadow-xl",
+                  showVideos[index] ? "bg-gray-200" : "bg-green-200"
+                )}
+              >
                 <h2 className="mb-4 text-xl font-bold">{index + 1}</h2>
                 <div className="mb-4 flex justify-between">
                   <Button
