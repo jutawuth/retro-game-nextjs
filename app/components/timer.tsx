@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const time = 300 // 5 minutes in seconds
+const time = 600 // 10 minutes in seconds
 export default function Timer() {
   const [timeLeft, setTimeLeft] = useState(time); 
   const [isRunning, setIsRunning] = useState(false);

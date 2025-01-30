@@ -29,8 +29,8 @@ const videoData = [
   { no: "1", id: "Cuoop11CL74", start: 0 },
   {
     no: "2",
-    id: "wsHNUOgJJZU",
-    start: 0,
+    id: "19UjyhKY7eA",
+    start: 3,
   },
   {
     no: "3",
@@ -295,7 +295,7 @@ export default function YouTubePage() {
     //     updated[index] = !updated[index];
     //     return updated;
     //   });
-    // }, 10000);
+    // }, 15000);
   };
 
   const toggleShow = (index: number) => {
@@ -316,8 +316,10 @@ export default function YouTubePage() {
             <li>1. ยกมือให้ กรรมการให้สัญญาณ จึงจะมีสิทธิตอบ</li>
             <li>2. ต้องตอบภายใน 5 วินาที</li>
             <li>3. ต้องตอบชื่อเพลงให้ถูกต้อง</li>
-            <li>4. ตอบถูกได้ 1 คะแนน</li>
-            <li>5. ตอบผิด หรือตอบไม่ทัน -3 คะแนน</li>
+            <li>4. ตอบถูกได้ 1 คะแนน และได้เลือกเพลงข้อถัดไป</li>
+            <li>5. ตอบผิด หรือตอบไม่ทัน -3 คะแนน และทุกคนในทีมจะหมดสิทธิตอบในข้อนั้นๆ</li>
+            <li>6. แต่ละข้อเล่นเพลง ประมาณ 10 วินาที หากไม่มีทีไหนยกมือ จะข้่มไปเพลงถัดไป</li>
+            <li>7. จบเกมเมื่อเวลาหมด ทีมไหนคะแนนสูงสุด จะเป็นผู้ชนะ</li>
           </ol>
         </div>
         {videoData.map((video, index) => {
@@ -346,7 +348,7 @@ export default function YouTubePage() {
                 >
                   {playVideos[index] ? "Stop Video" : "Play Video"}
                 </Button>
-                {/* {playVideos[index] && <CountDownTimer />} */}
+                {playVideos[index] && <CountDownTimer />}
 
                 <Button
                   onClick={() => toggleShow(index)}

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
+const time = 10
 export default function CountDownTimer() {
-  const [timeLeft, setTimeLeft] = useState(10); // 15 secs in seconds
+  const [timeLeft, setTimeLeft] = useState(time); // 15 secs in seconds
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function CountDownTimer() {
 
   return (
      
-      <p className=" font-bold mb-4 w-full text-left text-red-500">{formatTime(timeLeft)}</p>
+      <p className="  font-bold mb-4 w-full text-left p-1 pl-4 text-red-500">{formatTime(timeLeft)}</p>
  
   );
 }
