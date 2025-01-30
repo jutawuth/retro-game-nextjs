@@ -39,8 +39,8 @@ const videoData = [
   },
   {
     no: "4",
-    id: "lFD2eid8Ugw",
-    start: 0,
+    id: "8k6C_3Q4S1o",
+    start: 10,
   },
   {
     no: "5",
@@ -222,56 +222,56 @@ const videoData = [
     id: "RIFBoS04ETk",
     start: 131,
   },
-  // {
-  //   no: "41",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "42",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "43",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "44",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "45",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "46",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "47",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "48",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "49",
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   no: "50",
-  //   id: "",
-  //   start: 0,
-  // },
+  {
+    no: "41",
+    id: "qguo-j5PxBE",
+    start: 4,
+  },
+  {
+    no: "42",
+    id: "TntfD-GpPd4",
+    start: 67,
+  },
+  {
+    no: "43",
+    id: "6f5sozKp0R0",
+    start: 0,
+  },
+  {
+    no: "44",
+    id: "UYVqeYjFidY",
+    start: 4,
+  },
+  {
+    no: "45",
+    id: "nY9sHiZ4bTU",
+    start: 0,
+  },
+  {
+    no: "46",
+    id: "fmAEiuuoc_0",
+    start: 8,
+  },
+  {
+    no: "47",
+    id: "lFD2eid8Ugw",
+    start: 73,
+  },
+  {
+    no: "48",
+    id: "TMr6subvuQI",
+    start: 61,
+  },
+  {
+    no: "49",
+    id: "XJRkTyvoL4k",
+    start: 116,
+  },
+  {
+    no: "50",
+    id: "ENnGPkhVu2g",
+    start: 105,
+  },
 ];
 
 export default function YouTubePage() {
@@ -312,13 +312,19 @@ export default function YouTubePage() {
         <div className=" text-center text-red-500">
           <p className=" text-6xl font-bold mb-10">กติกา</p>
 
-          <ol className=" text-4xl mb-20">
+          <ol className=" text-4xl mb-20 text-left">
             <li>1. ยกมือให้ กรรมการให้สัญญาณ จึงจะมีสิทธิตอบ</li>
             <li>2. ต้องตอบภายใน 5 วินาที</li>
             <li>3. ต้องตอบชื่อเพลงให้ถูกต้อง</li>
             <li>4. ตอบถูกได้ 1 คะแนน และได้เลือกเพลงข้อถัดไป</li>
-            <li>5. ตอบผิด หรือตอบไม่ทัน -3 คะแนน และทุกคนในทีมจะหมดสิทธิตอบในข้อนั้นๆ</li>
-            <li>6. แต่ละข้อเล่นเพลง ประมาณ 10 วินาที หากไม่มีทีไหนยกมือ จะข้่มไปเพลงถัดไป</li>
+            <li>
+              5. ตอบผิด หรือตอบไม่ทัน -3 คะแนน
+              และทุกคนในทีมจะหมดสิทธิตอบในข้อนั้นๆ
+            </li>
+            <li>
+              6. แต่ละข้อเล่นเพลง ประมาณ 10 วินาที หากไม่มีทีไหนยกมือ
+              จะข้่มไปเพลงถัดไป
+            </li>
             <li>7. จบเกมเมื่อเวลาหมด ทีมไหนคะแนนสูงสุด จะเป็นผู้ชนะ</li>
           </ol>
         </div>
