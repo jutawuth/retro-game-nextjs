@@ -308,8 +308,8 @@ export default function YouTubePage() {
 
   return (
     <div className=" flex flex-row ">
-      <div className=" container flex min-h-screen flex-wrap justify-center  p-4">
-        <div className=" text-center text-red-500">
+      <div className="  flex  min-h-screen flex-wrap justify-center  p-4">
+        <div className=" w-full text-center text-red-500">
           <p className=" text-6xl font-bold mb-10">กติกา</p>
 
           <ol className=" text-4xl mb-20 text-left">
@@ -328,6 +328,7 @@ export default function YouTubePage() {
             <li>7. จบเกมเมื่อเวลาหมด ทีมไหนคะแนนสูงสุด จะเป็นผู้ชนะ</li>
           </ol>
         </div>
+         
         {videoData.map((video, index) => {
           const videoUrl = playVideos[index]
             ? `https://www.youtube.com/embed/${video.id}?start=${video.start}&autoplay=1`
