@@ -307,32 +307,95 @@ export default function YouTubePage() {
   };
 
   return (
-    <div className=" flex flex-row ">
+    <div className=" flex flex-row  ">
       <div className="  flex  min-h-screen flex-wrap justify-center  p-4">
-        <div className=" w-full text-center text-red-500">
+        <div className=" w-full   justify-center text-red-500">
           <p className=" text-6xl font-bold mb-10">กติกา</p>
 
-          <ol className=" text-4xl mb-20 text-left">
+          <ol className=" text-4xl  mb-20 text-left">
             <li>1. ยกมือให้ กรรมการให้สัญญาณ จึงจะมีสิทธิตอบ</li>
-            <li>2. ต้องตอบภายใน 5 วินาที</li>
-            <li>3. ต้องตอบชื่อเพลงให้ถูกต้อง</li>
-            <li>4. ตอบถูกได้ <u>1 คะแนน</u> และได้เลือกเพลงข้อถัดไป</li>
             <li>
-              5. ตอบผิด หรือตอบไม่ทัน <u>-3 คะแนน</u> { " "}
+              2. ต้องตอบภายใน 5 วินาที และคนยกมือเท่านั้นที่มีสิทธิตอบ
+              (คนในทีมช่วยไม่ได้)
+            </li>
+            <li>3. ต้องตอบชื่อเพลงให้ถูกต้อง</li>
+            <li>
+              4. ตอบถูกได้ <u>1 คะแนน</u> และได้เลือกเพลงข้อถัดไป
+            </li>
+            <li>
+              5. ตอบผิด หรือตอบไม่ทัน <u>-3 คะแนน</u>{" "}
               และทุกคนในทีมจะหมดสิทธิตอบในข้อนั้นๆ
             </li>
             <li>
               6. แต่ละข้อเล่นเพลง ประมาณ 10 วินาที หากไม่มีทีไหนยกมือ
-              จะข้่ามไปเพลงถัดไป
+              จะข้ามไปเพลงถัดไป
             </li>
             <li>7. จบเกมเมื่อเวลาหมด ทีมไหนคะแนนสูงสุด จะเป็นผู้ชนะ</li>
           </ol>
         </div>
-         
+
         {videoData.map((video, index) => {
           const videoUrl = playVideos[index]
             ? `https://www.youtube.com/embed/${video.id}?start=${video.start}&autoplay=1`
             : "";
+
+          if (index < 3) {
+            return (
+              <Card
+                key={index}
+                className={cn(
+                  "m-4 w-[400px] p-6 shadow-xl",
+                  index < 3 && " bg-yellow-100"
+                )}
+              >
+                <h2 className="mb-4 text-xl font-bold">
+                  {index < 3 ? <>Example </> : <> {index - 2}</>}
+                </h2>
+                <div className="mb-4 flex justify-between">
+                  <Button
+                    onClick={() => togglePlay(index)}
+                    className={cn(
+                      "rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700",
+                      playVideos[index] && "bg-red-600 hover:bg-red-700"
+                    )}
+                  >
+                    {playVideos[index] ? "Stop Video" : "Play Video"}
+                  </Button>
+                  {playVideos[index] && <CountDownTimer />}
+
+                  <Button
+                    onClick={() => toggleShow(index)}
+                    className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                  >
+                    {showVideos[index] ? "Hide" : "Show"}
+                  </Button>
+                </div>
+                <CardContent
+                  className={cn(
+                    "relative h-64 w-full overflow-hidden rounded-2xl bg-black",
+                    showVideos[index] ? "visible" : "hidden"
+                  )}
+                >
+                  {videoUrl ? (
+                    <motion.iframe
+                      src={videoUrl}
+                      title={`YouTube Video Player ${index + 1}`}
+                      className="h-full w-full rounded-xl border-none"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                    ></motion.iframe>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gray-800 text-white">
+                      <p>Press Play to Start the Video</p>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            );
+          }
 
           return (
             <Card
