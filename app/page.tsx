@@ -6,222 +6,268 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Timer from "./components/timer";
+import CountDownTimer from "./components/countdown-timer";
 
 // Video data with IDs and start times
 const videoData = [
   {
+    no: "ex1",
     id: "a1wW0AjQCI8",
     start: 26,
   },
   {
+    no: "ex2",
     id: "AZ_t9iAJRDw",
     start: 6,
   },
   {
+    no: "ex3",
     id: "vVQnJqgu6-U",
     start: 0,
   },
+  { no: "1", id: "Cuoop11CL74", start: 0 },
   {
-    id: "Cuoop11CL74",
-    start: 0,
-  },
-  {
+    no: "2",
     id: "wsHNUOgJJZU",
     start: 0,
   },
   {
+    no: "3",
     id: "RiZ2N3A5siI",
     start: 7,
   },
   {
+    no: "4",
     id: "lFD2eid8Ugw",
     start: 0,
   },
   {
+    no: "5",
     id: "Hy_BVgkKMRg",
     start: 70,
   },
   {
+    no: "6",
     id: "wzpfR_bkljM",
     start: 0,
   },
   {
+    no: "7",
     id: "qJ8BpSaTF5A",
     start: 0,
   },
   {
+    no: "8",
     id: "Mrax5_z07Y0",
     start: 192,
   },
   {
+    no: "9",
+    id: "0iuKt11wfic",
+    start: 2,
+  },
+  {
+    no: "10",
+    id: "WT_tZuDUpn8",
+    start: 99,
+  },
+  {
+    no: "11",
+    id: "Jd4Hd-HFgls",
+    start: 22,
+  },
+  {
+    no: "12",
+    id: "TSsfTJ5OxTo",
+    start: 121,
+  },
+  {
+    no: "13",
     id: "RMo3SR1G1yg",
     start: 210,
   },
   {
-    id: "WT_tZuDUpn8",
-    start: 99,
+    no: "14",
+    id: "7ot0J1ROxxs",
+    start: 6,
+  },
+  {
+    no: "15",
+    id: "S4k4nvTPjYI",
+    start: 20,
+  },
+  {
+    no: "16",
+    id: "hm7OVC2MQDg",
+    start: 80,
+  },
+  {
+    no: "17",
+    id: "3Wkmu-O7PA8",
+    start: 11,
+  },
+  {
+    no: "18",
+    id: "UJjWqoV3pes",
+    start: 11,
+  },
+  {
+    no: "19",
+    id: "CSnIH3MtVpQ",
+    start: 11,
+  },
+  {
+    no: "20",
+    id: "8rMGIqCIjkc",
+    start: 46,
+  },
+  {
+    no: "21",
+    id: "UZxDLz-li_c",
+    start: 71,
+  },
+  {
+    no: "22",
+    id: "CKDwsFbq1_c",
+    start: 2,
+  },
+  {
+    no: "23",
+    id: "DFEVA5-INzM",
+    start: 118,
+  },
+  {
+    no: "24",
+    id: "roughtzsCDI",
+    start: 90,
+  },
+  {
+    no: "25",
+    id: "tn7_CFkr6Oo",
+    start: 0,
+  },
+  {
+    no: "26",
+    id: "GibiNy4d4gc",
+    start: 0,
+  },
+  {
+    no: "27",
+    id: "jdiRSOkzQns",
+    start: 15,
+  },
+  {
+    no: "28",
+    id: "ApXoWvfEYVU",
+    start: 4,
+  },
+  {
+    no: "29",
+    id: "kJQP7kiw5Fk",
+    start: 29,
+  },
+  {
+    no: "30",
+    id: "R0n4T0SQt70",
+    start: 2,
   },
   // {
+  //   no: "31",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "32",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "33",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "34",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "35",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "36",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "37",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "38",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "39",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "40",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "41",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "42",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "43",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "44",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "45",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "46",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "47",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "48",
   //   id: "",
   //   start: 0,
   // },
   // {
+  //   no: "49",
   //   id: "",
   //   start: 0,
   // },
   // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
-  //   id: "",
-  //   start: 0,
-  // },
-  // {
+  //   no: "50",
   //   id: "",
   //   start: 0,
   // },
@@ -241,6 +287,14 @@ export default function YouTubePage() {
       updated[index] = !updated[index];
       return updated;
     });
+
+    // setTimeout(() => {
+    //   setPlayVideos((prev) => {
+    //     const updated = [...prev];
+    //     updated[index] = !updated[index];
+    //     return updated;
+    //   });
+    // }, 10000);
   };
 
   const toggleShow = (index: number) => {
@@ -252,11 +306,8 @@ export default function YouTubePage() {
   };
 
   return (
-    <div className=" flex flex-col items-center justify-center">
-      <div className=" w-full flex flex-row justify-end sticky top-0 right-0">
-        <Timer />
-      </div>
-      <div className=" container flex min-h-screen flex-wrap justify-center bg-gray-50 p-4">
+    <div className=" flex flex-row ">
+      <div className=" container flex min-h-screen flex-wrap justify-center  p-4">
         <div className=" text-center text-red-500">
           <p className=" text-6xl font-bold mb-10">กติกา</p>
 
@@ -264,6 +315,7 @@ export default function YouTubePage() {
             <li>1. ยกมือให้กรรมการชี้ จึงจะมีสิทธิตอบ</li>
             <li>2. เมื่อกรรมการชี้ ต้องตอบภายใน 5 วินาที</li>
             <li>3. ต้องตอบให้ถูกทั้งชื่อเพลง และศิลปิน</li>
+            <li>4. ตอบได้ 1 คะแนน ตอบผิด หรือตอบไม่ทัน -3 คะแนน</li>
           </ol>
         </div>
         {videoData.map((video, index) => {
@@ -290,8 +342,10 @@ export default function YouTubePage() {
                     playVideos[index] && "bg-red-600 hover:bg-red-700"
                   )}
                 >
-                  {playVideos[index] ? "Pause Video" : "Play Video"}
+                  {playVideos[index] ? "Stop Video" : "Play Video"}
                 </Button>
+                {/* {playVideos[index] && <CountDownTimer />} */}
+
                 <Button
                   onClick={() => toggleShow(index)}
                   className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
@@ -325,6 +379,11 @@ export default function YouTubePage() {
             </Card>
           );
         })}
+      </div>
+      <div>
+        <div className=" m-6 flex flex-row justify-end sticky top-0 right-0">
+          <Timer />
+        </div>
       </div>
     </div>
   );

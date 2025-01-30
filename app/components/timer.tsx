@@ -22,7 +22,7 @@ export default function Timer() {
 
   return (
     <div className="flex flex-col items-center p-4 border rounded-lg shadow-md w-64 bg-white">
-      <h1 className="text-xl font-bold mb-4">{timeLeft/60} Minute Timer</h1>
+      <h1 className="text-xl font-bold mb-4">5 Minute Timer</h1>
       <p className="text-5xl font-bold mb-4">{formatTime(timeLeft)}</p>
       <div className="flex gap-2">
         <button
