@@ -316,14 +316,14 @@ export default function YouTubePage() {
             <li>1. ยกมือให้ กรรมการให้สัญญาณ จึงจะมีสิทธิตอบ</li>
             <li>2. ต้องตอบภายใน 5 วินาที</li>
             <li>3. ต้องตอบชื่อเพลงให้ถูกต้อง</li>
-            <li>4. ตอบถูกได้ 1 คะแนน และได้เลือกเพลงข้อถัดไป</li>
+            <li>4. ตอบถูกได้ <u>1 คะแนน</u> และได้เลือกเพลงข้อถัดไป</li>
             <li>
-              5. ตอบผิด หรือตอบไม่ทัน -3 คะแนน
+              5. ตอบผิด หรือตอบไม่ทัน <u>-3 คะแนน</u> { " "}
               และทุกคนในทีมจะหมดสิทธิตอบในข้อนั้นๆ
             </li>
             <li>
               6. แต่ละข้อเล่นเพลง ประมาณ 10 วินาที หากไม่มีทีไหนยกมือ
-              จะข้่มไปเพลงถัดไป
+              จะข้่ามไปเพลงถัดไป
             </li>
             <li>7. จบเกมเมื่อเวลาหมด ทีมไหนคะแนนสูงสุด จะเป็นผู้ชนะ</li>
           </ol>
@@ -337,12 +337,12 @@ export default function YouTubePage() {
             <Card
               key={index}
               className={cn(
-                "m-4 w-full p-6 shadow-xl",
+                "m-4 w-[400px] p-6 shadow-xl",
                 index < 3 && " bg-yellow-100"
               )}
             >
               <h2 className="mb-4 text-xl font-bold">
-                {index < 3 ? <>Example </> : <>YouTube Player {index - 2}</>}
+                {index < 3 ? <>Example </> : <> {index - 2}</>}
               </h2>
               <div className="mb-4 flex justify-between">
                 <Button
