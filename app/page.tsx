@@ -336,7 +336,7 @@ export default function YouTubePage() {
           <p className=" text-6xl font-bold mb-10">กติกา</p>
 
           <ol className=" text-4xl  mb-20 text-left">
-            <li>1. ยกมือให้ กรรมการให้สัญญาณ จึงจะมีสิทธิตอบ</li>
+            <li>1. ยกมือขึ้น รอกรรมการให้สัญญาณ จึงจะมีสิทธิตอบ</li>
             <li>
               2. ต้องตอบภายใน 5 วินาที และคนยกมือเท่านั้นที่มีสิทธิตอบ
               (คนในทีมช่วยไม่ได้)
