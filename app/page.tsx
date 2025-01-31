@@ -38,7 +38,7 @@ const videoData = [
   {
     no: "2",
     id: "19UjyhKY7eA",
-    start: 3,
+    start: 71,
   },
   {
     no: "3",
@@ -73,7 +73,7 @@ const videoData = [
   {
     no: "9",
     id: "0iuKt11wfic",
-    start: 2,
+    start: 11,
   },
   {
     no: "10",
@@ -253,7 +253,7 @@ const videoData = [
   {
     no: "45",
     id: "nY9sHiZ4bTU",
-    start: 0,
+    start: 7,
   },
   {
     no: "46",
@@ -283,6 +283,13 @@ const videoData = [
 ];
 
 export default function YouTubePage() {
+  const [playExVideos, setPlayExVideos] = useState<boolean[]>(
+    Array(3).fill(false)
+  );
+  const [showExVideos, setExShowVideos] = useState<boolean[]>(
+    Array(3).fill(false)
+  );
+
   const [playVideos, setPlayVideos] = useState<boolean[]>(
     Array(53).fill(false)
   );
@@ -290,20 +297,28 @@ export default function YouTubePage() {
     Array(53).fill(false)
   );
 
+  const toggleExPlay = (index: number) => {
+    setPlayExVideos((prev) => {
+      const updated = [...prev];
+      updated[index] = !updated[index];
+      return updated;
+    });
+  };
+
   const togglePlay = (index: number) => {
     setPlayVideos((prev) => {
       const updated = [...prev];
       updated[index] = !updated[index];
       return updated;
     });
+  };
 
-    // setTimeout(() => {
-    //   setPlayVideos((prev) => {
-    //     const updated = [...prev];
-    //     updated[index] = !updated[index];
-    //     return updated;
-    //   });
-    // }, 15000);
+  const toggleExShow = (index: number) => {
+    setExShowVideos((prev) => {
+      const updated = [...prev];
+      updated[index] = !updated[index];
+      return updated;
+    });
   };
 
   const toggleShow = (index: number) => {
@@ -315,9 +330,9 @@ export default function YouTubePage() {
   };
 
   return (
-    <div className=" flex flex-row  ">
-      <div className="  flex  min-h-screen flex-wrap justify-center  p-4">
-        <div className=" w-full   justify-center text-red-500">
+    <div className=" flex flex-row">
+      <div className=" flex min-h-screen flex-wrap justify-center  p-4">
+        <div className=" w-full justify-center text-red-500">
           <p className=" text-6xl font-bold mb-10">กติกา</p>
 
           <ol className=" text-4xl  mb-20 text-left">
@@ -326,19 +341,20 @@ export default function YouTubePage() {
               2. ต้องตอบภายใน 5 วินาที และคนยกมือเท่านั้นที่มีสิทธิตอบ
               (คนในทีมช่วยไม่ได้)
             </li>
-            <li>3. ต้องตอบชื่อเพลงให้ถูกต้อง</li>
+            <li>
+              3. ต้องตอบชื่อเพลงให้ถูกต้อง (นับตั้งแต่ประโยคแรก ห้าม เอ่อ อ่า
+              เอ๋)
+            </li>
             <li>
               4. ตอบถูกได้ <u>1 คะแนน</u> และได้เลือกเพลงข้อถัดไป
             </li>
-            <li>
-              5. ตอบผิด หรือตอบไม่ทัน <u>-3 คะแนน</u>{" "}
-              และทุกคนในทีมจะหมดสิทธิตอบในข้อนั้นๆ
-            </li>
+            <li>5. ตอบผิด หรือตอบไม่ทัน ทุกคนในทีมจะหมดสิทธิตอบในข้อนั้นๆ</li>
             <li>
               6. แต่ละข้อเล่นเพลง ประมาณ 10 วินาที หากไม่มีทีไหนยกมือ
               จะข้ามไปเพลงถัดไป
             </li>
             <li>7. จบเกมเมื่อเวลาหมด ทีมไหนคะแนนสูงสุด จะเป็นผู้ชนะ</li>
+            <li>8. คำตัดสินกรรมการ ถือเป็นที่สิ้นสุด</li>
           </ol>
         </div>
 
@@ -348,7 +364,7 @@ export default function YouTubePage() {
             <AccordionContent>
               <div className="flex flex-row flex-wrap w-full">
                 {exVideoData.map((video, index) => {
-                  const videoUrl = playVideos[index]
+                  const videoUrl = playExVideos[index]
                     ? `https://www.youtube.com/embed/${video.id}?start=${video.start}&autoplay=1`
                     : "";
 
@@ -362,27 +378,27 @@ export default function YouTubePage() {
                       <h2 className="mb-4 text-xl font-bold">Example</h2>
                       <div className="mb-4 flex justify-between">
                         <Button
-                          onClick={() => togglePlay(index)}
+                          onClick={() => toggleExPlay(index)}
                           className={cn(
                             "rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700",
-                            playVideos[index] && "bg-red-600 hover:bg-red-700"
+                            playExVideos[index] && "bg-red-600 hover:bg-red-700"
                           )}
                         >
-                          {playVideos[index] ? "Stop Video" : "Play Video"}
+                          {playExVideos[index] ? "Stop Video" : "Play Video"}
                         </Button>
-                        {playVideos[index] && <CountDownTimer />}
+                        {playExVideos[index] && <CountDownTimer />}
 
                         <Button
-                          onClick={() => toggleShow(index)}
+                          onClick={() => toggleExShow(index)}
                           className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
                         >
-                          {showVideos[index] ? "Hide" : "Show"}
+                          {showExVideos[index] ? "Hide" : "Show"}
                         </Button>
                       </div>
                       <CardContent
                         className={cn(
                           "relative h-64 w-full overflow-hidden rounded-2xl bg-black",
-                          showVideos[index] ? "visible" : "hidden"
+                          showExVideos[index] ? "visible" : "hidden"
                         )}
                       >
                         {videoUrl ? (
