@@ -22,7 +22,7 @@ export default function Scoreboard() {
           <div key={team} className="flex flex-row items-center gap-4 border p-4 rounded-md">
             <span className="text-lg font-semibold w-24">{team}</span>
             <button
-              onClick={() => updateScore(team, -3)}
+              onClick={() => updateScore(team, -1)}
               className="px-3 py-1 bg-red-500 text-white rounded-md"
             >
               -
